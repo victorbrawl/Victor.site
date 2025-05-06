@@ -1,96 +1,92 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Quebra-Cabeça Simples</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .tabuleiro {
-      width: 300px;
-      height: 300px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 100px);
-      grid-template-rows: repeat(3, 100px);
-      gap: 2px;
-    }
-    .peca {
-      width: 100px;
-      height: 100px;
-      border: 1px solid #ccc;
-      background-size: 300px 300px;
-      cursor: move;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>Roblox Fan Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ececec;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #da2a1c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #b41f15;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .games {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px;
+        }
+        .game {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            width: 30%;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .game img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
 
-  <h1>Quebra-Cabeça</h1>
-  <p>Arraste as peças para montar a imagem!</p>
+<header>
+    <h1>Roblox World</h1>
+    <p>Seu portal para os melhores jogos do Roblox!</p>
+</header>
 
-  <div class="tabuleiro" id="tabuleiro"></div>
+<nav>
+    <a href="#">Início</a>
+    <a href="#">Jogos</a>
+    <a href="#">Comunidade</a>
+    <a href="#">Sobre</a>
+</nav>
 
-  <script>
-    const tabuleiro = document.getElementById("tabuleiro");
-    const pecas = [];
+<section class="games">
+    <div class="game">
+        <img src="https://via.placeholder.com/300x150" alt="Jogo 1">
+        <h3>Brookhaven</h3>
+        <p>Viva em uma cidade cheia de aventuras com seus amigos!</p>
+    </div>
+    <div class="game">
+        <img src="https://via.placeholder.com/300x150" alt="Jogo 2">
+        <h3>Adopt Me</h3>
+        <p>Adote pets, cuide da sua casa e explore mundos mágicos.</p>
+    </div>
+    <div class="game">
+        <img src="https://via.placeholder.com/300x150" alt="Jogo 3">
+        <h3>Doors</h3>
+        <p>Encare mistérios e desafios em um hotel cheio de surpresas.</p>
+    </div>
+</section>
 
-    // Criar as peças com posições embaralhadas
-    for (let i = 0; i < 9; i++) {
-      const peca = document.createElement("div");
-      peca.classList.add("peca");
-      peca.draggable = true;
-      peca.dataset.posicao = i;
-      pecas.push(peca);
-    }
-
-    // Embaralhar
-    pecas.sort(() => Math.random() - 0.5);
-
-    // Aplicar imagem e posições
-    pecas.forEach((peca, i) => {
-      const x = (peca.dataset.posicao % 3) * -100;
-      const y = Math.floor(peca.dataset.posicao / 3) * -100;
-      peca.style.backgroundImage = "url('https://i.imgur.com/3YVZiwY.jpg')";
-      peca.style.backgroundPosition = `${x}px ${y}px`;
-      tabuleiro.appendChild(peca);
-    });
-
-    let dragged;
-
-    tabuleiro.addEventListener("dragstart", e => {
-      if (e.target.classList.contains("peca")) {
-        dragged = e.target;
-      }
-    });
-
-    tabuleiro.addEventListener("dragover", e => {
-      e.preventDefault();
-    });
-
-    tabuleiro.addEventListener("drop", e => {
-      if (e.target.classList.contains("peca")) {
-        const cloneA = dragged.cloneNode(true);
-        const cloneB = e.target.cloneNode(true);
-        tabuleiro.replaceChild(cloneA, e.target);
-        tabuleiro.replaceChild(cloneB, dragged);
-        addDragListeners(); // reinicia eventos
-      }
-    });
-
-    function addDragListeners() {
-      document.querySelectorAll(".peca").forEach(peca => {
-        peca.addEventListener("dragstart", e => {
-          dragged = e.target;
-        });
-      });
-    }
-
-    addDragListeners();
-  </script>
+<footer>
+    &copy; 2025 Roblox World - Este site é apenas para fins educativos e de fãs.
+</footer>
 
 </body>
 </html>
